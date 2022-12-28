@@ -1,0 +1,28 @@
+{
+  "mounts": [
+    {
+      "source": "//192.168.1.100/share1",
+      "destination": "/mnt/networkdrive1",
+      "type": "cifs",
+      "options": "credentials=/root/.smbcredentials,iocharset=utf8,sec=ntlmssp"
+    },
+    {
+      "source": "//192.168.1.100/share2",
+      "destination": "/mnt/networkdrive2",
+      "type": "cifs",
+      "options": "credentials=/root/.svc-acct-creds,iocharset=utf8,sec=ntlmssp"
+    }
+  ],
+  "commands": [
+    {
+      "source": "/mnt/networkdrive1/source1",
+      "destination": "/mnt/networkdrive1/destination1",
+      "exclude_patterns": "*.tmp"
+    },
+    {
+      "source": "/mnt/networkdrive2/source2",
+      "destination": "/mnt/networkdrive2/destination2",
+      "include_patterns": "*.txt"
+    }
+  ]
+}
