@@ -1,0 +1,23 @@
+{
+  "name": "file-copy-container",
+  "version": "0.0.1",
+  "description": "Script to mount drives and sync files using azcopy",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itlackey/file-copy-container.git"
+  },
+  "author": "ITLackey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itlackey/file-copy-container/issues"
+  },
+  "homepage": "https://github.com/itlackey/file-copy-container#readme",
+  "dependencies": {
+    "@azure-tools/azcopy-node": "^2.9.0",
+    "child_process": "^1.0.2"
+  }
+}

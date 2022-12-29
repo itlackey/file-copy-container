@@ -1,25 +1,23 @@
-FROM ubuntu:22.04
+FROM node:current
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    cifs-utils \
-    jq \
-    wget
+    cifs-utils 
 
+# Copy the script and configuration file into the container
+COPY app/ /app
 
-# Install azcopy
-RUN wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-RUN tar -xf azcopy.tar.gz --strip-components 1 -C /bin
-RUN rm azcopy.tar.gz
-RUN rm /bin/NOTICE.txt
+# Set the working directory
+WORKDIR /app
 
+# Install node dependencies
+RUN npm install
 
-# Copy the config files
-COPY config.json /root
-COPY keys/ /root/keys
-RUN chmod 600 -R /root/keys
-COPY run.sh /root
+# Copy the config files and keys
+COPY keys/ /app/keys
+RUN chmod 600 -R /app/keys
+COPY config.json /app/
 
-WORKDIR /root
-#CMD [ "./run.sh" ]
-ENTRYPOINT [ "bash" ]
+CMD [ "node", "run.js" ]
+
+#ENTRYPOINT [ "bash" ]
